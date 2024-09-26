@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho com nome e menu -->
+    <header>
+        <h1>Cerulean</h1>
+        <nav>
+            <a href="#">Homepage</a>
+            <a href="#">Our Clients</a>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Seção de boas-vindas -->
+    <section id="welcome">
+        <h2>Welcome to our website</h2>
+        <p>This is Cerulean, a free, fully standards-compliant CSS template...</p>
+    </section>
+
+    <!-- Cartões de conteúdo -->
+    <section class="cards">
+        <div class="card">
+            <h3>Maecenas luctus</h3>
+            <p>Nullam non wisi a sem semper eleifend...</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <h3>Integer gravida</h3>
+            <p>Proin eu wisi suscipit nulla suscipit interdum...</p>
+            <button>Learn More</button>
+        </div>
+        <div class="card">
+            <h3>Praesent mauris</h3>
+            <p>Donec mattis libero eget urna...</p>
+            <button>Learn More</button>
+        </div>
+    </section>
+
+    <!-- Ícones na parte inferior -->
+    <div class="icons">
+        <i class="fa fa-wrench"></i>
+        <i class="fa fa-cog"></i>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-cut"></i>
+        <i class="fa fa-lock"></i>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Cerulean. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+Css
+
+/* CSS Geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: white;
+    font-size: 36px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+}
+
+/* Seção de boas-vindas */
+#welcome {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: white;
+}
+
+#welcome h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#welcome p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Cartões de conteúdo */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.card {
+    width: 30%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.card p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.card button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #45a049;
+}
+
+/* Ícones na parte inferior */
+.icons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #4CAF50;
+}
+
+.icons i {
+    font-size: 32px;
+    color: white;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.icons i:hover {
+    color: #ddd;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+}
+
+  
