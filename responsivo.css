@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+@media (max-width: 320px) {
+    body {
+        width: 100%;
+    }
+
+    *p {
+      color: white
+        bacgroud-color: blue
+        width: 100%;
+    }
+
+    a {
+        position: relative;
+        left: 50%;
+        top: 30%;
+    }
+}
