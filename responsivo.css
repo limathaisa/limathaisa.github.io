@@ -5,16 +5,101 @@
 }
 
 @media (max-width: 320px) {
-    body {
+    img {
         width: 100%;
     }
 
-    *p {
-      color: white
-        bacgroud-color: blue
+    section {
         width: 100%;
     }
 
+    a {
+        position: relative;
+        left: 50%;
+        top: 30%;
+    }
+}
+
+@media (max-width: 549px) {
+    img {
+        width: 100%;
+    }
+
+    section {
+        padding: 5px;
+        border: 1px solid gray;
+        height: auto;
+    }
+
+    h1 {
+        margin-bottom: 17px;
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+    
+    a {
+        position: relative;
+        left: 80%;
+        top: 30%;
+    }
+}
+
+@media (min-width: 540px) and (max-width: 991px) {
+    * {
+        font-size: 115%;
+    }
+
+    section {
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        border: 1px solid gray;
+        width: 800px;
+    }
+    
+    img {
+        width: 400px;
+        margin-right: 15px;
+    }
+    
+    h1 {
+        margin-bottom: 17px;
+        text-align: center;
+    }
+    
+    a {
+        position: relative;
+        left: 50%;
+        top: 30%;
+    }
+}
+
+@media (min-width: 992px) {
+    * {
+        font-size: 115%;
+    }
+
+    section {
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        border: 1px solid gray;
+        width: 800px;
+    }
+    
+    img {
+        width: 400px;
+        margin-right: 15px;
+    }
+    
+    h1 {
+        margin-bottom: 17px;
+        text-align: center;
+    }
+    
     a {
         position: relative;
         left: 50%;
