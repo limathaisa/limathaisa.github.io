@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor para Números Romanos</title>
+</head>
+<body>
+  <h1>Conversor de Número Decimal para Romano</h1>
+
+  <label for="numeroDecimal">Digite um número decimal (1 a 3999):</label><br>
+  <input type="number" id="numeroDecimal" min="1" max="3999" placeholder="Ex: 27"><br><br>
+
+  <button onclick="converterParaRomano()">Converter</button>
+
+  <h2>Resultado:</h2>
+  <p id="resultado">---</p>
+
+  <script>
+    function decimalParaRomano(num) {
+      if (num < 1 || num > 3999) return "Número fora do intervalo (1-3999)";
+      
+      const valores = [
+        { valor: 1000, simbolo: "M" },
+        { valor: 900, simbolo: "CM" },
+        { valor: 500, simbolo: "D" },
+        { valor: 400, simbolo: "CD" },
+        { valor: 100, simbolo: "C" },
+        { valor: 90, simbolo: "XC" },
+        { valor: 50, simbolo: "L" },
+        { valor: 40, simbolo: "XL" },
+        { valor: 10, simbolo: "X" },
+        { valor: 9, simbolo: "IX" },
+        { valor: 5, simbolo: "V" },
+        { valor: 4, simbolo: "IV" },
+        { valor: 1, simbolo: "I" }
+      ];
+
+      let romano = "";
+      for (const item of valores) {
+        while (num >= item.valor) {
+          romano += item.simbolo;
+          num -= item.valor;
+        }
+      }
+
+      return romano;
+    }
+
+    function converterParaRomano() {
+      const numero = parseInt(document.getElementById('numeroDecimal').value);
+      const resultado = decimalParaRomano(numero);
+      document.getElementById('resultado').textContent = resultado;
+    }
+  </script>
+  <style>
+    h1 {
+
+color: rgb(0, 66, 63);
+}
+
+h2 {
+color: rgb(0, 61, 3);
+}
+
+body {
+background-color: rgb(205, 252, 215);
+}
+
+button {
+background-color: rgb(36, 65, 27);
+color: aliceblue;
+}
+  </style>
+</body>
+</html>

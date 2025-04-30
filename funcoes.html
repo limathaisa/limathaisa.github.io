@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Funções Numéricas</title>
+</head>
+<body>
+  <h1>Funções Numéricas com Arrays</h1>
+
+  <label for="inputArray">Digite números separados por vírgula:</label><br>
+  <input type="text" id="inputArray" placeholder="Ex: 1, 2, 3, 4, 5"><br><br>
+
+  <button onclick="calcularSoma()">Sum</button>
+  <button onclick="calcularSomaImpares()">Sum Odds</button>
+  <button onclick="calcularProduto()">Product</button>
+
+  <h2>Resultado:</h2>
+  <p id="resultado">---</p>
+
+  <script>
+    function parseArray() {
+      const input = document.getElementById('inputArray').value;
+      
+      return input.split(',').map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+    }
+
+    function sum(arr) {
+      return arr.reduce((acc, val) => acc + val, 0);
+    }
+
+    function sumOdds(arr) {
+      return arr.filter(n => n % 2 !== 0).reduce((acc, val) => acc + val, 0);
+    }
+
+    function product(arr) {
+      return arr.reduce((acc, val) => acc * val, 1);
+    }
+
+    function calcularSoma() {
+      const array = parseArray();
+      document.getElementById('resultado').textContent = `Soma: ${sum(array)}`;
+    }
+
+    function calcularSomaImpares() {
+      const array = parseArray();
+      document.getElementById('resultado').textContent = `Soma dos ímpares: ${sumOdds(array)}`;
+    }
+
+    function calcularProduto() {
+      const array = parseArray();
+      document.getElementById('resultado').textContent = `Produto: ${product(array)}`;
+    }
+  </script>
+  <style>
+    h1 {
+
+color: rgb(0, 21, 88);
+}
+
+h2 {
+color: rgb(0, 5, 80);
+}
+
+body {
+background-color: rgb(204, 231, 248);
+}
+
+button {
+background-color: rgb(45, 46, 100);
+color: aliceblue;
+}
+  </style>
+</body>
+</html>

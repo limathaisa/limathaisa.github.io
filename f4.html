@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Saque Mínimo</title>
+</head>
+<body>
+  <h1>Calculadora de Saque Mínimo</h1>
+
+  <label for="valorSaque">Digite o valor do saque (apenas números):</label><br>
+  <input type="number" id="valorSaque" placeholder="Ex: 1280"><br><br>
+
+  <button onclick="calcularSaque()">Calcular Saque</button>
+
+  <h2>Resultado:</h2>
+  <div id="resultado">---</div>
+
+  <script>
+    function calcularSaque() {
+      let valor = parseInt(document.getElementById('valorSaque').value);
+      const cedulas = [100, 50, 20, 10, 5, 2];
+      const resultado = {};
+
+      for (const cedula of cedulas) {
+        if (valor >= cedula) {
+          resultado[cedula] = Math.floor(valor / cedula);
+          valor %= cedula;
+        }
+      }
+
+      // Mostrar resultado
+      const output = document.getElementById('resultado');
+      if (valor !== 0) {
+        output.innerHTML = `<p>Não é possível sacar exatamente esse valor com as cédulas disponíveis.</p>`;
+      } else {
+        let html = "<table border='1' cellpadding='5'><tr><th>Cédula</th><th>Quantidade</th></tr>";
+        for (const cedula in resultado) {
+          html += `<tr><td>R$${cedula},00</td><td>${resultado[cedula]}</td></tr>`;
+        }
+        html += "</table>";
+        output.innerHTML = html;
+      }
+    }
+  </script>
+  <style>
+    h1 {
+
+        color: rgb(88, 53, 0);
+    }
+
+    h2 {
+        color: rgb(80, 48, 0);
+    }
+
+    body {
+        background-color: beige;
+    }
+     
+    button {
+        background-color: rgb(99, 0, 0);
+        color: aliceblue;
+    }
+  </style>
+</body>
+</html>

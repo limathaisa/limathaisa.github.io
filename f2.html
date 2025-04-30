@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Números Primos</title>
+</head>
+<body>
+  <h1>Gerador de Números Primos</h1>
+
+  <label for="inputValores">Digite um número (quantidade) ou dois números separados por vírgula (intervalo):</label><br>
+  <input type="text" id="inputValores" placeholder="Ex: 4 ou 2, 10"><br><br>
+
+  <button onclick="gerarPrimos()">Gerar Primos</button>
+
+  <h2>Resultado:</h2>
+  <p id="resultado">---</p>
+
+  <script>
+    
+    function ehPrimo(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+   
+    function gerarNPrimos(n) {
+      const primos = [];
+      let numero = 2;
+      while (primos.length < n) {
+        if (ehPrimo(numero)) {
+          primos.push(numero);
+        }
+        numero++;
+      }
+      return primos;
+    }
+
+   
+    function gerarPrimosNoIntervalo(min, max) {
+      const primos = [];
+      const inicio = Math.min(min, max);
+      const fim = Math.max(min, max);
+      for (let i = inicio; i <= fim; i++) {
+        if (ehPrimo(i)) {
+          primos.push(i);
+        }
+      }
+      return primos;
+    }
+
+   
+    function gerarPrimos() {
+      const input = document.getElementById('inputValores').value.trim();
+      const partes = input.split(',').map(p => parseInt(p.trim())).filter(p => !isNaN(p));
+
+      let resultado;
+
+      if (partes.length === 1) {
+        resultado = gerarNPrimos(partes[0]);
+      } else if (partes.length === 2) {
+        resultado = gerarPrimosNoIntervalo(partes[0], partes[1]);
+      } else {
+        resultado = ['Entrada inválida'];
+      }
+
+      document.getElementById('resultado').textContent = resultado.join(', ');
+    }
+  </script>
+  <style>
+    h1 {
+
+color: rgb(122, 5, 97);
+}
+
+h2 {
+color: rgb(116, 6, 116);
+}
+
+body {
+background-color: rgb(240, 194, 247);
+}
+
+button {
+background-color: rgb(65, 0, 51);
+color: aliceblue;
+}
+  </style>
+</body>
+</html>
