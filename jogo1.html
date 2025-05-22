@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/forca.js" defer></script>
+    <link rel="stylesheet" href="css/forca.css">
+</head>
+<body>
+    <h1>Jogo da Forca</h1>
+    <div class="display">
+        <ul id="palavra"></ul>
+    </div>
+    <div class="controle">
+        
+    </div>
+    <div class="resposta">
+        <input type="text" id="tentativa" placeholder="Digite uma letra">
+        <button id="executa">Tentar</button>
+    </div>
+</body>
+</html>
+<script>
+    //passo 0 - definir um array de palavras
+const palavras = ["açucena", "advogado", "afta", "alambique", "alcachofra", "algarismo", "almanaque", "almoxarife", "alquimia", "altivez", "alvíssaras", "amendoim", "amnésia", "amplificar", "ampulheta", "ansioso", "aplaudir", "ascensão", "asterisco", "atlas", "balacobaco", "bandolim", "barulhento", "basquetebol", "batráquio", "beneficente", "berimbau", "bicarbonato", "brusquidão", "bugiganga", "bumerangue", "burocracia", "caatinga", "caboclo", "cacareco", "cacto", "cadarço", "cãibra", "calibrado", "camuflagem", "candelabro", "cassetete", "catalisador", "catequizar", "cérebro", "chamariz", "cicatriz", "cleptomaníaco", "coincidência", "companhia", "condescender", "consciente", "crepúsculo", "cronologia", "deglutir", "depredar", "destruído", "diapasão", "digladiar", "diretriz", "dobradiça", "ecossistema", "embaixador", "empecilho", "entretido", "entrevista", "envernizar", "enxaqueca", "enxerido", "escangalhado", "escaravelho", "escombro", "esculacho", "esfirra", "espinafre", "esplendor", "estapafúrdio", "estetoscópio", "exceção", "excêntrico", "excepcional", "faniquito", "fascículo", "flexível", "frustrado", "gargantilha", "glândula", "glicerina", "glorioso", "gnomo", "grampeador", "hamster", "helicóptero", "hemisfério", "herdeiro", "hermético", "hierárquico", "hieróglifo", "hipocrisia", "humanizar", "idolatrada", "imbróglio", "inexorável", "inflamado", "influência", "insignificância", "interruptor", "invertebrado", "iogurte", "irascível", "lantejoula", "licenciado", "losango", "madrasta", "magnético", "manteigueira", "marimbondo", "mesclar", "meteorologia", "mexerico", "micróbio", "microfone", "microscópio", "milionário", "mordaz", "nebulizador", "oscilação", "paralisado", "pedágio", "pernóstico", "perturbar", "piripaque", "plissado", "pneumático", "pneumonia", "poliomielite", "potiguar", "prescindir", "presságio", "privilégio", "prodígio", "prostração", "prurido", "psicanálise", "psicólogo", "quadriciclo", "quádruplo", "quinquilharia", "reciclar", "reflorescer", "reivindicar", "rescindir", "retrógrado", "retrovisor", "ritmo", "seborreia", "sensatez", "serelepe", "serpentina", "simplório", "simulacro", "sincrônico", "sobrevivente", "subsídio", "supérfluo", "suscetível", "termômetro", "torácico", "travesseiro", "trilogia", "universidade", "vangloriar", "vaporizador", "ventilador", "xilindró", "ziguezague", "ziquizira", "zodíaco", "zumbido"]
+
+//funcao para sortear palavras
+const sortearPalavra = () => palavras[Math.trunc(Math.random()*palavras.length)].toUpperCase()
+
+let palavraSorteada = ""
+const montarDisplay = () => {
+    //item html que receberá a palavra sorteada
+    const lista = document.querySelector("#palavra")
+    //sorteio da palavra
+    palavraSorteada = sortearPalavra()
+
+    //criar lis para cada letra da palavra
+    for(let i=0;i<palavraSorteada.length;i++){
+        //cria um li
+        const nodeElement = document.createElement("li")
+        //cria a letra para o li
+        const textContent = document.createTextNode(" ? ")
+        // adiciona a letra no li
+        nodeElement.appendChild(textContent)
+        //adiciona o li no elemento html
+        lista.appendChild(nodeElement)
+    }
+}
+
+montarDisplay()
+
+const montarBoneco = () =>{
+    const boneco = document.querySelector(".controle")
+    boneco.innerHTML += " - "
+}
+
+const btn = document.querySelector("#executa")
+
+btn.addEventListener("click", function(){
+    const letra = document.querySelector("#tentativa").value.toUpperCase()
+
+    const listaLetra = document.querySelectorAll("#palavra li")
+    //pesquisando a  letra na palavra
+    for(let i =0; i< palavraSorteada.length; i++){
+        
+        if(letra == palavraSorteada[i]){
+            listaLetra[i].innerHTML = palavraSorteada[i];
+            listaLetra[i].style.color = "#000"
+        }
+    }
+    
+    document.querySelector("#tentativa").value=""
+
+})
+</script>
+<style>
+    
+    #palavra {
+    list-style: none;
+    display: flex;
+
+}
+
+#palavra li {
+   
+    padding: 5px 15px;
+    margin: 5px;
+    color:#fff;
+    border-bottom: #000 solid 1px;
+}
+body {
+    color:rgb(254, 226, 226)
+}
+h1{
+    color:rgb(74, 0, 0)
+}
+button {
+    color:#fff;
+    background-color: rgb(71, 1, 1);
+}
+</style>
