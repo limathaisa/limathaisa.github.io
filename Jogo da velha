@@ -1,0 +1,150 @@
+,<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo da Velha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .celula {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border: 2px solid #444;
+      font-size: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .celula:hover {
+      background-color: #e0e0e0;
+    }
+
+    #mensagem {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Jogo da Velha</h1>
+  <div id="mensagem">Sua vez!</div>
+  <div id="tabuleiro"></div>
+  <button onclick="reiniciarJogo()">Reiniciar</button>
+
+  <script>
+    const tabuleiro = document.getElementById("tabuleiro");
+    const mensagem = document.getElementById("mensagem");
+
+    let tab = ["", "", "", "", "", "", "", "", ""];
+    let fimDeJogo = false;
+
+    function criatab() {
+      tabuleiro.innerHTML = "";
+      tab.forEach((valor, i) => {
+        const celula = document.createElement("div");
+        celula.classList.add("celula");
+        celula.textContent = valor;
+        celula.addEventListener("click", () => jogar(i));
+        tabuleiro.appendChild(celula);
+      });
+    }
+
+    function jogar(indice) {
+      if (fimDeJogo || tab[indice] !== "") return;
+
+      tab[indice] = "X";
+      atualiza();
+      if (verifica("X")) return;
+
+      setTimeout(jogada, 500);
+    }
+
+    function jogada() {
+      if (fimDeJogo) return;
+
+      let posicoesVazias = tab
+        .map((val, i) => val === "" ? i : null)
+        .filter(i => i !== null);
+
+      if (posicoesVazias.length === 0) return;
+
+      let escolha = posicoesVazias[Math.floor(Math.random() * posicoesVazias.length)];
+      tab[escolha] = "O";
+      atualizar();
+      verificarVitoria("O");
+    }
+
+    function verifica(jogador) {
+      const combinacoes = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+      ];
+
+      for (let combinacao of combinacoes) {
+        const [a, b, c] = combinacao;
+        if (tab[a] === jogador && tab[b] === jogador && tab[c] === jogador) {
+          mensagem.textContent = (jogador === "X" ? "Você venceu!" : "Computador venceu!");
+          fimDeJogo = true;
+          return true;
+        }
+      }
+
+      if (!tab.includes("")) {
+        mensagem.textContent = "Empate!";
+        fimDeJogo = true;
+        return true;
+      }
+
+      mensagem.textContent = (jogador === "X") ? "Vez do computador..." : "Sua vez!";
+      return false;
+    }
+
+    function atualiza() {
+      criatab();
+    }
+
+    function reiniciaJogo() {
+      tab = ["", "", "", "", "", "", "", "", ""];
+      fimDeJogo = false;
+      mensagem.textContent = "Sua vez!";
+      atualizar();
+    }
+
+    criatab();
+  </script>
+</body>
+</html>
