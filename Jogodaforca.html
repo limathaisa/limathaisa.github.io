@@ -141,7 +141,7 @@
 
     function iniciaJogo() {
       palavraSorteada = palavras[Math.floor(Math.random() * palavras.length)];
-      letrasC = [];
+      letrasc = [];
       erros = 0;
       document.getElementById("mensagem").textContent = "";
       document.querySelectorAll(".parte").forEach(parte => parte.style.display = "none");
@@ -178,7 +178,7 @@
       } else {
         erros++;
         mostraParteDoBoneco(erros);
-        if (erros >= maxErros) {
+        if (erros >= errosMax) {
           document.getElementById("mensagem").textContent = "Você perdeu! A palavra era: " + palavraSorteada;
           desativaBotoes();
         }
@@ -193,9 +193,9 @@
     }
 
     function verificaVitoria() {
-      const venceu = palavraSorteada.split("").every(letra => letrasCorretas.includes(letra));
+      const venceu = palavraSorteada.split("").every(letra => letrasc.includes(letra));
       if (venceu) {
-        document.getElementById("mensagem").textContent = "Parabéns, você venceu!";
+        document.getElementById("mensagem").textContent = " você venceu!";
         desativaBotoes();
       }
     }
