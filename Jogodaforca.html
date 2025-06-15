@@ -133,30 +133,30 @@
   <button id="reiniciar" onclick="iniciarJogo()">Reiniciar</button>
 
   <script>
-    const palavras = [PRESIDENTE", "SAPATO", "LIXO", "MATO", "FULANODETAL", "EUAMOOCORTEZ", "NASA", "AMERICA", "VASCO", "MORTE", "AMANHECER", "CARACAMOLEKE", "MOANA", "JAVASCRIPT"];
-    const errosMax = 6;
+    const palavras = ["JUSTICA", "TELENOVELA", "JOGO", "FRUTA", "VISAO", "POLICIA", "CAMARO" , "PRESIDENTE", "ILOVECORTEZ", "TARTARUGA","PROMESSA"];
+    const maxErros = 5;
     let palavraSorteada = "";
-    let letrasc = [];
+    let letrasCorretas = [];
     let erros = 0;
 
-    function iniciaJogo() {
+    function iniciarJogo() {
       palavraSorteada = palavras[Math.floor(Math.random() * palavras.length)];
-      letrasc = [];
+      letrasCorretas = [];
       erros = 0;
       document.getElementById("mensagem").textContent = "";
       document.querySelectorAll(".parte").forEach(parte => parte.style.display = "none");
-      mostraPalavra();
-      criaBotoes();
+      mostrarPalavra();
+      criarBotoes();
     }
 
-    function mostraPalavra() {
+    function mostrarPalavra() {
       const display = palavraSorteada.split("").map(letra =>
-        letrasc.includes(letra) ? letra : "_"
+        letrasCorretas.includes(letra) ? letra : "_"
       ).join(" ");
       document.getElementById("palavra").textContent = display;
     }
 
-    function criaBotoes() {
+    function criarBotoes() {
       const container = document.getElementById("letras");
       container.innerHTML = "";
       for (let i = 65; i <= 90; i++) {
@@ -164,48 +164,47 @@
         const btn = document.createElement("button");
         btn.textContent = letra;
         btn.className = "letra-btn";
-        btn.onclick = () => testaLetra(letra, btn);
+        btn.onclick = () => testarLetra(letra, btn);
         container.appendChild(btn);
       }
     }
 
-    function testaLetra(letra, botao) {
+    function testarLetra(letra, botao) {
       botao.disabled = true;
       if (palavraSorteada.includes(letra)) {
-        letrasc.push(letra);
-        mostraPalavra();
-        verificaVitoria();
+        letrasCorretas.push(letra);
+        mostrarPalavra();
+        verificarVitoria();
       } else {
         erros++;
-        mostraParteDoBoneco(erros);
-        if (erros >= errosMax) {
+        mostrarParteDoBoneco(erros);
+        if (erros >= maxErros) {
           document.getElementById("mensagem").textContent = "Você perdeu! A palavra era: " + palavraSorteada;
-          desativaBotoes();
+          desativarBotoes();
         }
       }
     }
 
-    function mostraParteDoBoneco(erro) {
+    function mostrarParteDoBoneco(erro) {
       const partes = ["cabeca", "tronco", "bracoE", "bracoD", "pernaE", "pernaD"];
       if (erro <= partes.length) {
         document.getElementById(partes[erro - 1]).style.display = "block";
       }
     }
 
-    function verificaVitoria() {
-      const venceu = palavraSorteada.split("").every(letra => letrasc.includes(letra));
-      if (venceu) {
-        document.getElementById("mensagem").textContent = " você venceu!";
-        desativaBotoes();
+    function verificarVitoria() {
+      const ganhou = palavraSorteada.split("").every(letra => letrasCorretas.includes(letra));
+      if (ganhou) {
+        document.getElementById("mensagem").textContent = "Parabéns, você venceu!";
+        desativarBotoes();
       }
     }
 
-    function desativar
-Botoes() {
+    function desativarBotoes() {
       document.querySelectorAll(".letra-btn").forEach(btn => btn.disabled = true);
     }
 
-    iniciaJogo();
+    iniciarJogo();
   </script>
 </body>
 </html>
