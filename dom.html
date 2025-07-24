@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bd1">
+    <h1 id="h1">mudando a cor do body</h1>
+    <button id="b1" onclick="mudaCor()">mudar</button>
+
+    
+
+</body>
+</html>
+
+<script>
+    
+   function mudaCor (){
+    let r = Math.round(Math.random()*255);
+    let g = Math.round(Math.random()*255);
+    let b = Math.round(Math.random()*255);
+    let bd1 = document.getElementById('bd1');
+    document.body.style.backgroundColor =`rgb(${r},${g}, ${b}`;
+    
+   }
+
+ </script>

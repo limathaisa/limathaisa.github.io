@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador de Cliques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="contador">0</h1>
+  <p id="p1"></p>
+
+  <button onclick="incrementar()">Clique aqui</button>
+  <button onclick="resetar()">Resetar</button>
+  <button onclick="diminuir()">diminuir</button>
+  <script>
+    let contador = 0;
+
+    function incrementar() {
+      contador++;
+      document.getElementById('contador').textContent = contador;
+
+      if(contador>0){
+        document.getElementById('contador').style.color = "green";
+        console.log(contador);
+      }
+      if(contador<=0){
+        document.getElementById('contador').style.color = "red";
+        console.log(contador)
+      }
+      document.getElementById('p1').innerHTML = Date();
+
+    }
+    
+
+    function resetar() {
+      contador = 0;
+      document.getElementById('contador').textContent = contador;
+      if(contador>0){
+        document.getElementById('contador').style.color = "green";
+        console.log(contador);
+      }
+      if(contador<=0){
+        document.getElementById('contador').style.color = "red";
+        console.log(contador)
+      }
+      document.getElementById('p1').innerHTML = Date();
+    }
+
+    function diminuir (){
+        contador--
+        document.getElementById('contador').textContent = contador;
+        if(contador>0){
+        document.getElementById('contador').style.color = "green";
+        console.log(contador);
+      }
+      if(contador<=0){
+        document.getElementById('contador').style.color = "red";
+        console.log(contador)
+      }
+      document.getElementById('p1').innerHTML = Date();
+
+    }
+  </script>
+
+</body>
+</html>
