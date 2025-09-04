@@ -1,5 +1,5 @@
 <?
-//include("../../service/produto.service.php");
+include("../../service/produto.service.php");
 $acao = $_POST['acao'];
 $nome = isset($_POST['nome'])?$_POST['nome']:null;
 $preco = isset($_POST['preco'])?$_POST['preco']:null;

@@ -20,4 +20,3 @@ echo "Removido com sucesso";
 else {
 echo "Ação inválida";
 }
-?>

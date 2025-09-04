@@ -5,10 +5,13 @@ formCad.addEventListener("submit", (ev2) => {
 ev2.preventDefault();
 let campoNome = document.getElementById("nome");
 let campoTelefone = document.getElementById("telefone");
-validaFormulario(campoNome.value, campoTelefone.value) ? formCad.submit() : null;
+validaFormulario(campoNome.value, campoTelefone.value) 
+? formCad.submit() 
+: null;
+
 });
 }
 );
-let validaFormulario = (nome, telefone) => {
+let validarFormulario = (nome, telefone) => {
 return true;
 };
