@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cafeteria do CEFET-RJ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Cafeteria do CEFET-RJ</h1>
+  <div class="container">
+    <section id="cardapio">
+      <h2>Cardápio</h2>
+      <div id="itens-cardapio" class="itens"></div>
+    </section>
+    <aside id="compras">
+      <h2>Itens Comprados</h2>
+      <ul id="lista-itens"></ul>
+      <p>Total: R$ <span id="total">0.00</span></p>
+    </aside>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+#cardapio {
+  flex: 2;
+}
+
+#cardapio .itens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+}
+
+#compras {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#compras h2, #cardapio h2 {
+  margin-top: 0;
+}
+
+#lista-itens {
+  list-style: none;
+  padding: 0;
+}
+
+#total {
+  font-weight: bold;
+}[
+  {
+    "nome": "Café com Leite",
+    "descricao": "Café quentinho com leite cremoso",
+    "imagem": "https://cdn.pixabay.com/photo/2021/08/24/21/42/coffee-6571884_640.jpg",
+    "preco": 3.50
+  },
+  {
+    "nome": "Bolo de Chocolate",
+    "descricao": "Fatia de bolo de chocolate com morango",
+    "imagem": "https://cdn.pixabay.com/photo/2016/11/22/18/52/cake-1850011_640.jpg",
+    "preco": 8.00
+  },
+  {
+    "nome": "Hambúrguer",
+    "descricao": "Hambúrguer suculento com queijo e alface",
+    "imagem": "https://cdn.pixabay.com/photo/2023/05/29/17/01/hamburger-8026582_640.jpg",
+    "preco": 12.00
+  }
+
+
+]<!-- HTML (index.html) -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafeteria do CEFET-RJ</title>
+    <!-- CSS (estilos) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            margin-top: 20px;
+        }
+        .menu-area {
+            flex: 3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .menu-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 150px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .menu-item:hover {
+            background-color: #f9f9f9;
+        }
+        .cart-area {
+            flex: 1;
+            margin-left: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: fit-content;
+        }
+        .cart-area h2 {
+            margin-top: 0;
+        }
+        .cart-area ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .cart-area li {
+            margin-bottom: 5px;
+        }
+        .cart-total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cafeteria do CEFET-RJ</h1>
+    <div class="container">
+        <div class="menu-area" id="menu"></div>
+        <div class="cart-area">
+            <h2>Itens Comprados</h2>
+            <ul id="cart-items"></ul>
+            <p class="cart-total">Total: R$ <span id="total">0.00</span></p>
+        </div>
+    </div>
+    <!-- JS (script) -->
+    <script>
+        // JavaScript
+        let cart = [];
+        let total = 0;
+
+        // Carrega o cardápio do arquivo JSON
+        fetch('cardapio.json')
+            .then(response => response.json())
+            .then(data => {
+                const menuArea = document.getElementById('menu');
+                data.forEach(item => {
+                    // Cria o card do item do cardápio
+                    let itemDiv = document.createElement('div');
+                    itemDiv.className = 'menu-item';
+                    itemDiv.innerHTML = `
+                        <img src="${item.imagem}" alt="${item.nome}">
+                        <h3>${item.nome}</h3>
+                        <p>R$ ${item.preco.toFixed(2)}</p>
+                    `;
+                    // Ao clicar no card, adiciona o item ao carrinho
+                    itemDiv.addEventListener('click', function() {
+                        addToCart(item);
+                    });
+                    menuArea.appendChild(itemDiv);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o cardápio:', error);
+            });
+
+        // Função para adicionar item ao carrinho
+        function addToCart(item) {
+            cart.push(item);
+            total += item.preco;
+            updateCartDisplay();
+        }
+
+        // Função para atualizar a exibição do carrinho
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+            cartItemsList.innerHTML = '';
+            cart.forEach((item) => {
+                let li = document.createElement('li');
+                li.textContent = item.nome + ' - R$ ' + item.preco.toFixed(2);
+                cartItemsList.appendChild(li);
+            });
+            totalElement.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+
+<!-- JSON (cardapio.json) -->
+[
+    {
+        "nome": "Café",
+        "preco": 3.50,
+        "imagem": "https://dummyimage.com/200x150/000/fff&text=Cafe"
+    },
+    {
+        "nome": "Sanduíche",
+        "preco": 5.00,
+        "imagem": "https://dummyimage.com/200x150/000/fff&text=Sanduiche"
+    },
+    {
+        "nome": "Suco",
+        "preco": 4.00,
+        "imagem": "https://dummyimage.com/200x150/000/fff&text=Suco"
+    }
+]
