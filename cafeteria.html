@@ -1,41 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
-  <title>Cafeteria do CEFET-RJ</title>
+  <title>Cafeteria</title>
+  <script src="cafeteria.js" defer></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
+
       margin: 0;
       padding: 20px;
-      display: flex;
-      gap: 30px;
-      background: #f5f5f5;
+      background-color: #90d8ff;
     }
+
+    header {
+      font-family: 'Luminari Fantasy', cursive;
+      width: 100%;
+      outline: none;
+      /* Remove a borda de foco */
+      box-shadow: none;
+      /* Remove o efeito de sombra */
+      padding: 50px;
+
+
+    }
+
     h1 {
+      outline: none;
+      padding: 50px;
+      border-width: 0cm;
+      font-family: 'Luminari Fantasy', cursive;
+      /* Nome da fonte seguida por fontes genéricas */
       text-align: center;
+      background-color: #001d9e;
+      color: #eafa3e;
+      white-space: nowrap;
+
+
+
     }
-    .menu, .cart {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    .container {
+      display: flex;
+      margin-top: 100px;
+
+
+
+    }
+
+    .menu-area {
+      flex: 3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      flex-direction: row;
+
+    }
+
+    .menu-item {
+      border: 2px solid rgb(255, 255, 255);
+      padding: 10px;
+      width: 150px;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 50px;
+      background-color: #001d9e;
+      color: aliceblue
+    }
+
+    .menu-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50px;
+    }
+
+    .menu-item:hover {
+      background-color: #368dff;
+      color: aliceblue;
+      border-radius: 50px;
+    }
+
+
+    .cart-area:hover {
+      background-color: #001d9e;
+      border: 3px solid rgb(255, 255, 255)
+    }
+
+
+    .cart-area {
       flex: 1;
+      margin-left: 20px;
+      border: 2px solid rgb(0, 44, 139);
+      padding: 10px;
+      height: fit-content;
+      border-radius: 50px;
+      text-align: center;
+      color: aliceblue;
     }
-    
+
+    .cart-area h2 {
+      margin-top: 0;
+    }
+
+    .cart-area ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .cart-area li {
+      margin-bottom: 5px;
+    }
+
+    .cart-total {
+      font-weight: bold;
+
+    }
   </style>
-  </head>
+</head>
+
 <body>
-
-  <div class="menu">
-    <h1>Cardápio</h1>
-    <div id="menu-list"></div>
+  <header>
+    <h1>Cafeteria do CEFET-RJ</h1>
+  </header>
+  <div class="container">
+    <div class="menu-area" id="menu"></div>
+    <div class="cart-area">
+      <h2>Itens Comprados</h2>
+      <ul id="cart-items"></ul>
+      <p class="cart-total">Total: R$ <span id="total">0.00</span></p>
+    </div>
   </div>
-
-  <div class="cart">
-    <h1>Itens Comprados</h1>
-    <div id="cart-list"></div>
-    <div class="total" id="total"></div>
-  </div>
-  </body>
-</html>

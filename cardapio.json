@@ -1,0 +1,43 @@
+
+[
+    {
+        "nome": "Café Expresso",
+        "preco": 8.00,
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_GgN1jUvjhURpNXwBIYDFNIELiEhwZ6WKqg&s"
+    },
+    {
+        "nome": "Sanduíche Natural",
+        "preco": 15.00,
+        "imagem": "https://ser.vitao.com.br/wp-content/uploads/2017/10/Sanduiche-natural-saiba-como-comer-bem-e-saudavel-1-920x535.jpg"
+    },
+    {
+        "nome": "Suco de Laranja",
+        "preco": 10.00,
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSapffnzu-qYUJ9bG_10MeWWd4GSZwhHV2NlA&s"
+    }, 
+    {
+      "nome": "capuccino",
+      "preco": 12.00,
+      "imagem": "https://www.nescafe.com/br/sites/default/files/2024-09/NES_SBU_Recipes%202024_Website_French%20Vanilla%20Cappuccino_Hero%20Banner_1066x1066.jpg"
+  },
+
+  {
+    "nome": "Agua mineral",
+    "preco": 6.00,
+    "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIROd_m5TqdXbs60Y_ajK7p9pygWly6Y3zVA&s"
+},
+
+{
+  "nome": "Fatia de bolo",
+  "preco": 12.00,
+  "imagem": "https://st2.depositphotos.com/1177973/6086/i/450/depositphotos_60867841-stock-photo-delicious-chocolate-cake-on-plate.jpg"
+},
+
+{
+  "nome": "Croissant",
+  "preco": 17.00,
+  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/1200px-Croissant-Petr_Kratochvil.jpg"
+}
+]
+
+
