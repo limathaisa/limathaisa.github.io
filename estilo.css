@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+input, button {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#saida {
+  margin-top: 20px;
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+}
